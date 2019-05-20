@@ -8,10 +8,15 @@ public class Word
     public string word;
     private int typeIndex;
 
-    public Word(string newWord)
+    private WordDisplay display;
+
+    public Word(string newWord, WordDisplay newDisplay)
     {
         word = newWord;
         typeIndex = 0;
+
+        display = newDisplay;
+        display.SetWord(word);
     }
 
     public char GetNextLetter()
@@ -22,7 +27,7 @@ public class Word
     public void TypeLetter()
     {
         typeIndex++;
-        // remove letter on screen
+        display.RemoveLetter();
     }
 
     public bool WordTyped()
@@ -30,7 +35,7 @@ public class Word
         bool wordTyped = (typeIndex >= word.Length);
         if (wordTyped)
         {
-            // remove word on screen
+            display.RemoveWord();
         }
         return wordTyped;
     }

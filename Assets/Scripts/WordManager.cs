@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class WordManager : MonoBehaviour
 {
+    public List<Word> words;
+    public WordSpawner wordSpawner;
+
     private bool hasActiveWord;
-    private Word activeWord;
-
-    public List<Word> words;    
-
-    private void Start()
-    {
-        AddWord();
-        AddWord();
-        AddWord();
-    }
+    private Word activeWord;        
 
     public void AddWord()
-    {
-        Word word = new Word(WordGenerator.GetRandomWord());
+    {        
+        Word word = new Word(WordGenerator.GetRandomWord(), wordSpawner.SpawnWord());
         words.Add(word);
         Debug.Log(word.word);
     }
