@@ -8,9 +8,9 @@ public class WordSpawner : MonoBehaviour
     public GameObject wordPrefab;
     public Transform wordCanvas;
 
-    public float minX;
-    public float maxX;
-    public float minY;
+    public float minX = -2f;
+    public float maxX = 2f;
+    public float minY = 6f;
     public float wordDelay = 1.5f;
 
     private float nextWordTime = 0f;    

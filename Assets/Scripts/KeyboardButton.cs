@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class KeyboardButton : MonoBehaviour
 {
     public Text uiText; 
-    public string key;
+    public char key;
 
     public void Start()
     {
-        uiText.text = key;
+        uiText.text = key.ToString();
+        Debug.Log("KeyboardButton: " + key.ToString());
     }
 
     public void DidPressKey()
