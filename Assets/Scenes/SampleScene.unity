@@ -3002,6 +3002,11 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 1
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 19935d4532a10a64e969efa28c8f2788, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
 --- !u!4 &1342615201
 Transform:
   m_ObjectHideFlags: 0

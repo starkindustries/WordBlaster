@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        AudioManager.Instance.Play("Shoot");
     }
 
     public void SetTarget(Transform newTarget)
