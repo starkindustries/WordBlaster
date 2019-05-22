@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WordSpawner : MonoBehaviour
 {
+    private string[] wordList = { "quit", "watch", "equal", "rest" };
+    // private string[] wordList = { "q", "w", "e", "r", "t", "y", "u", "i", "o", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"};
+
     public WordManager wordManager;
     public GameObject wordPrefab;
     public Transform wordCanvas;
@@ -21,6 +24,12 @@ public class WordSpawner : MonoBehaviour
         Vector3 randomPosition = new Vector3(Random.Range(minX, maxX), minY);
         GameObject wordObj = Instantiate(wordPrefab, randomPosition, Quaternion.identity, wordCanvas);
         return wordObj.GetComponent<WordDisplay>();
+    }
+
+    public string GetRandomWord()
+    {
+        int randomIndex = Random.Range(0, wordList.Length);
+        return wordList[randomIndex];
     }
 
     private void Update()

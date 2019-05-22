@@ -16,6 +16,6 @@ public class KeyboardButton : MonoBehaviour
 
     public void DidPressKey()
     {
-        FindObjectOfType<GameManager>().DidPressKey(key);
+        FindObjectOfType<WordManager>().TypeLetter(key);
     }
 }

@@ -12,7 +12,7 @@ public class WordManager : MonoBehaviour
 
     public void AddWord()
     {        
-        Word word = new Word(WordGenerator.GetRandomWord(), wordSpawner.SpawnWord());
+        Word word = new Word(wordSpawner.GetRandomWord(), wordSpawner.SpawnWord());
         words.Add(word);
         Debug.Log(word.word);
     }
@@ -47,5 +47,5 @@ public class WordManager : MonoBehaviour
             hasActiveWord = false;
             words.Remove(activeWord);
         }
-    }
+    }    
 }
