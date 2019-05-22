@@ -38,6 +38,13 @@ public class Player : MonoBehaviour
 
     public void SetTarget(Transform newTarget)
     {
-        target = newTarget;
+        if (newTarget == null)
+        {
+            Shoot();
+        }
+        else
+        {
+            target = newTarget;
+        }        
     }
 }
