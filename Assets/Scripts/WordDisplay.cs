@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// This script is a component of the WordPrefab
+// TextField is a sub-component of WordPrefab and is assigned in the GUI.
 public class WordDisplay : MonoBehaviour
 {
     public Text textField;

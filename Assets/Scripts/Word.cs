@@ -39,4 +39,9 @@ public class Word
         }
         return wordTyped;
     }
+
+    public Transform GetTransform()
+    {
+        return display.transform;
+    }
 }

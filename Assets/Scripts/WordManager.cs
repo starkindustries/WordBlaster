@@ -6,6 +6,7 @@ public class WordManager : MonoBehaviour
 {
     public List<Word> words;
     public WordSpawner wordSpawner;
+    public Player player;
 
     private bool hasActiveWord;
     private Word activeWord;        
@@ -34,9 +35,10 @@ public class WordManager : MonoBehaviour
             {
                 if (word.GetNextLetter() == letter)
                 {
-                    activeWord = word;
+                    activeWord = word;                    
                     hasActiveWord = true;
                     word.TypeLetter();
+                    player.SetTarget(activeWord.GetTransform());
                     break;
                 }
             }
@@ -46,6 +48,7 @@ public class WordManager : MonoBehaviour
         {
             hasActiveWord = false;
             words.Remove(activeWord);
+            player.SetTarget(null);
         }
     }    
 }
