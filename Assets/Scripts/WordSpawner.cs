@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WordSpawner : MonoBehaviour
 {
-    private string[] wordList = { "quit", "watch", "equal", "rest" };
+    private string[] wordList = { "the", "quick", "brown", "fox", "jumped", "over", "lazy", "dog" };
     // private string[] wordList = { "q", "w", "e", "r", "t", "y", "u", "i", "o", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"};
 
     public WordManager wordManager;

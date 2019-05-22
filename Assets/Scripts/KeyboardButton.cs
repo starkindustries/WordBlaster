@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class KeyboardButton : MonoBehaviour
 {
-    public Text uiText; 
-    public char key;
+    public TextMeshProUGUI tmpText;
+    private char key;
 
-    public void Start()
+    public void Init(char newKey)
     {
-        uiText.text = key.ToString();
-        Debug.Log("KeyboardButton: " + key.ToString());
+        key = newKey;
+        tmpText.text = key.ToString();
     }
 
     public void DidPressKey()
     {
+        Debug.Log("DID PRESS: " + key.ToString());
         FindObjectOfType<WordManager>().TypeLetter(key);
     }
 }
