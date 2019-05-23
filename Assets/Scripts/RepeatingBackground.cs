@@ -19,7 +19,7 @@ public class RepeatingBackground : MonoBehaviour
         {
             RepositionBackground();
         }
-        Debug.Log("bg height: " + backgroundHeight + ", transform.position.y: " + transform.position.y);
+        // Debug.Log("bg height: " + backgroundHeight + ", transform.position.y: " + transform.position.y);
     }
 
     private void RepositionBackground()
