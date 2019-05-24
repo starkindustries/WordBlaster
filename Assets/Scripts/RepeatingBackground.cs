@@ -15,7 +15,7 @@ public class RepeatingBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < backgroundHeight * -1.5)
+        if (transform.position.y < backgroundHeight * -2)
         {
             RepositionBackground();
         }
@@ -24,7 +24,7 @@ public class RepeatingBackground : MonoBehaviour
 
     private void RepositionBackground()
     {
-        Vector2 groundOffset = new Vector2(0, backgroundHeight * 2f);
+        Vector2 groundOffset = new Vector2(0, backgroundHeight * 3f);
         transform.position = (Vector2)transform.position + groundOffset;
     }
 
