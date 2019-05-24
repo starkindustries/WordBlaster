@@ -11,17 +11,14 @@ public class WordSpawner : MonoBehaviour
     public GameObject wordPrefab;
     public Transform wordCanvas;
 
-    public float minX = -2f;
-    public float maxX = 2f;
-    public float minY = 6f;
+    public Transform leftBoundary, rightBoundary;
     public float wordDelay = 1.5f;
 
     private float nextWordTime = 0f;    
 
     public WordDisplay SpawnWord()
     {
-        Debug.Log("Spawn Word");
-        Vector3 randomPosition = new Vector3(Random.Range(minX, maxX), minY);
+        Vector3 randomPosition = new Vector3(Random.Range(leftBoundary.position.x, rightBoundary.position.x), leftBoundary.position.y);
         GameObject wordObj = Instantiate(wordPrefab, randomPosition, Quaternion.identity, wordCanvas);
         return wordObj.GetComponent<WordDisplay>();
     }

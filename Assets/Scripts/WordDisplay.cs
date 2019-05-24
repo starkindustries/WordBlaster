@@ -1,24 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 // This script is a component of the WordPrefab
 // TextField is a sub-component of WordPrefab and is assigned in the GUI.
 public class WordDisplay : MonoBehaviour
 {
-    public Text textField;
+    public TextMeshProUGUI tmpText;
     public float speed;
 
     public void SetWord(string word)
     {
-        textField.text = word;
+        tmpText.text = word;
     }
 
     public void RemoveLetter()
     {
-        textField.text = textField.text.Remove(0, 1);
-        textField.color = Color.red;
+        tmpText.text = tmpText.text.Remove(0, 1);
+        tmpText.color = Color.red;
     }
 
     public void RemoveWord()
