@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 342400718938833559}
   - component: {fileID: 3512588822815403104}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [LiberationSans SDF Material]
+  m_Name: TMP SubMeshUI [malgun-full-korean-charset-v2 Material + LiberationSans SDF
+    Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,8 +143,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: '?'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dd416ddd8d538ce4697ca18c8855adf6, type: 2}
-  m_sharedMaterial: {fileID: 2996732252585981760, guid: dd416ddd8d538ce4697ca18c8855adf6,
+  m_fontAsset: {fileID: 11400000, guid: 10062e65528d2af489b627cbfbffe031, type: 2}
+  m_sharedMaterial: {fileID: -3940871702687836387, guid: 10062e65528d2af489b627cbfbffe031,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

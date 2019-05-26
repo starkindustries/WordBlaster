@@ -11,8 +11,8 @@ public class KeyboardMobile : MonoBehaviour
 
     private KeyboardButton[] keys;
 
-    // private string keyChars = "qwertyuiopasdfghjklzxcvbnm ";
-    private string keyChars = "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔㅁㄴㅇㄹㅎㅗㅓㅏㅣㅋㅌㅊㅍㅠㅜㅡ ";
+    private string keyChars = "qwertyuiopasdfghjklzxcvbnm ";
+    // private string keyChars = "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔㅁㄴㅇㄹㅎㅗㅓㅏㅣㅋㅌㅊㅍㅠㅜㅡ ";
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,6 @@ public class KeyboardMobile : MonoBehaviour
         keys = new KeyboardButton[] { q, w, e, r, t, y, u, i, o, p, a, s, d, f, g, h, j, k, l, z, x, c, v, b, n, m, spaceBar};
         for(int i=0; i < keys.Length; i++)
         {
-            // Debug.Log("Key chars: " + keyChars[i].ToString());
             keys[i].Init(keyChars[i]);
         }
     }
