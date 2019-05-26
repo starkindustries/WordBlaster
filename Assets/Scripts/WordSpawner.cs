@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WordSpawner : MonoBehaviour
 {
-    private string[] wordList = { "the", "quick", "brown", "fox", "jumped", "over", "lazy", "dog" };
+    // private string[] wordList = { "the", "quick", "brown", "fox", "jumped", "over", "lazy", "dog" };
     // private string[] wordList = { "q", "w", "e", "r", "t", "y", "u", "i", "o", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"};
+    private string[] wordList = {"산", "여자", "남자"};
 
     public WordManager wordManager;
     public GameObject wordPrefab;
