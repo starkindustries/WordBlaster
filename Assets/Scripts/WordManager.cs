@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WordManager : MonoBehaviour
 {
     public List<Word> words;
     public WordSpawner wordSpawner;
     public Player player;
+    public TextMeshProUGUI keyboardTextDisplay;
 
     private bool hasActiveWord;
     private Word activeWord;        
@@ -20,6 +22,8 @@ public class WordManager : MonoBehaviour
 
     public void TypeLetter(char letter)
     {
+        keyboardTextDisplay.text += letter.ToString();
+
         if (hasActiveWord)
         {
             // check if letter was next

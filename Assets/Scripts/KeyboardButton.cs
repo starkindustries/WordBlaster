@@ -19,5 +19,6 @@ public class KeyboardButton : MonoBehaviour
     {
         Debug.Log("DID PRESS: " + key.ToString());
         FindObjectOfType<WordManager>().TypeLetter(key);
+        AudioManager.Instance.Play("Type");
     }
 }
