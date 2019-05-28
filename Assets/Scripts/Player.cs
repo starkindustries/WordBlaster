@@ -29,14 +29,12 @@ public class Player : MonoBehaviour
     private IEnumerator FireLaser()
     {
         Debug.Log("LASER FIRED!!");
-        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.up);
+        RaycastHit2D hitInfo = Physics2D.Raycast(origin: firePoint.position, direction: firePoint.up, distance: 100f, layerMask: LayerMask.GetMask("Default"));
         if(hitInfo)
         {
             Debug.Log(hitInfo.transform.name);
-            // Damageable damageObj = hitInfo.transform.GetComponent<Damageable>();
             laserLine.SetPosition(0, firePoint.position);
-            // laserLine.SetPosition(1, hitInfo.point);
-            laserLine.SetPosition(1, firePoint.position + firePoint.up * 100);
+            laserLine.SetPosition(1, hitInfo.point);
         }
         else
         {
