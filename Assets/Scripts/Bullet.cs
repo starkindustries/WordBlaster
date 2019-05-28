@@ -15,10 +15,10 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject, 3.0f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("BULLET HIT: " + collision.gameObject.tag);
+        Debug.Log("BULLET HIT: " + collision.name);
         // Instantiate(bulletParticles, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+        // Destroy(this.gameObject);
     }
 }

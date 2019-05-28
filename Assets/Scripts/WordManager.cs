@@ -8,7 +8,6 @@ public class WordManager : MonoBehaviour
     public List<Word> words;
     public WordSpawner wordSpawner;
     public Player player;
-    public TextMeshProUGUI keyboardTextDisplay;
 
     private bool hasActiveWord;
     private Word activeWord;        
@@ -22,8 +21,6 @@ public class WordManager : MonoBehaviour
 
     public void TypeLetter(char letter)
     {
-        keyboardTextDisplay.text += letter.ToString();
-
         if (hasActiveWord)
         {
             // check if letter was next
@@ -42,7 +39,6 @@ public class WordManager : MonoBehaviour
                     activeWord = word;                    
                     hasActiveWord = true;
                     word.TypeLetter();
-                    player.SetTarget(activeWord.GetTransform());
                     break;
                 }
             }
@@ -52,7 +48,6 @@ public class WordManager : MonoBehaviour
         {
             hasActiveWord = false;
             words.Remove(activeWord);
-            player.SetTarget(null);
         }
     }    
 }

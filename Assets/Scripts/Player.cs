@@ -6,46 +6,49 @@ public class Player : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
-
-    private Transform target;
-
-    private void Start()
-    {
-        Shoot();
-    }
+    public LineRenderer laserLine;
 
     private void Update()
-    {
-        if (target != null)
+    {        
+        if (Input.GetButtonDown("Fire1"))
         {
-            Aim();
+            ShootBullet();
         }
-    }    
+        if (Input.GetButtonDown("Fire2"))
+        {
+            StartCoroutine(FireLaser());
+        }
+    }        
 
-    private void Aim()
-    {
-        Vector2 direction = new Vector2(
-            target.position.x - transform.position.x,
-            target.position.y - transform.position.y
-        );
-        transform.up = direction;
-    }
-
-    private void Shoot()
+    private void ShootBullet()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         AudioManager.Instance.Play("Shoot");
     }
 
-    public void SetTarget(Transform newTarget)
+    private IEnumerator FireLaser()
     {
-        if (newTarget == null)
+        Debug.Log("LASER FIRED!!");
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, firePoint.up);
+        if(hitInfo)
         {
-            Shoot();
+            Debug.Log(hitInfo.transform.name);
+            // Damageable damageObj = hitInfo.transform.GetComponent<Damageable>();
+            laserLine.SetPosition(0, firePoint.position);
+            // laserLine.SetPosition(1, hitInfo.point);
+            laserLine.SetPosition(1, firePoint.position + firePoint.up * 100);
         }
         else
         {
-            target = newTarget;
-        }        
-    }
+            laserLine.SetPosition(0, firePoint.position);
+            laserLine.SetPosition(1, firePoint.position + firePoint.up * 100);
+        }
+
+        laserLine.enabled = true;
+        
+        // wait a bit
+        yield return new WaitForSeconds(0.5f);
+
+        laserLine.enabled = false;
+    }    
 }
