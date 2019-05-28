@@ -1327,6 +1327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 178126136671456970, guid: f7a6afe6a7b027e4f95c14c3cd9d8563,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 178126136671456968, guid: f7a6afe6a7b027e4f95c14c3cd9d8563,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1470,6 +1475,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3700123151015470722, guid: 38dece2136de40843bfb4fbe21931758,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3700123151015470975, guid: 38dece2136de40843bfb4fbe21931758,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1538,6 +1548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MediumEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604710119250203026, guid: 41dbc822208f1e740a008c33d4493476,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4604710119250203028, guid: 41dbc822208f1e740a008c33d4493476,
         type: 3}

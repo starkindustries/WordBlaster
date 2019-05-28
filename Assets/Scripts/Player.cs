@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private IEnumerator FireLaser()
     {
         Debug.Log("LASER FIRED!!");
-        RaycastHit2D hitInfo = Physics2D.Raycast(origin: firePoint.position, direction: firePoint.up, distance: 100f, layerMask: LayerMask.GetMask("Default"));
+        RaycastHit2D hitInfo = Physics2D.Raycast(origin: firePoint.position, direction: firePoint.up, distance: 100f, layerMask: LayerMask.GetMask("Enemy"));
         if(hitInfo)
         {
             Debug.Log(hitInfo.transform.name);
