@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 178126136671456971}
   - component: {fileID: 178126136671456969}
   m_Layer: 0
-  m_Name: BigEnemy
+  m_Name: EnemyBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1078454857
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7823993351900353309, guid: e8105fbd228d73942b39bfa9a4e96118,
     type: 3}

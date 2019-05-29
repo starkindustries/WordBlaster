@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     public LineRenderer laserLine;
 
     private void Update()
-    {        
+    {     
+        /*
         if (Input.GetButtonDown("Fire1"))
         {
             ShootBullet();
@@ -18,9 +19,10 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(FireLaser());
         }
+        */
     }        
 
-    private void ShootBullet()
+    public void ShootBullet()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         AudioManager.Instance.Play("Shoot");

@@ -27,7 +27,6 @@ public class Sound
 
     public void Play()
     {
-        Debug.Log("Playing: " + name);
         source.Play();
     }
 }
