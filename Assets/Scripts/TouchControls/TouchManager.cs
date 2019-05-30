@@ -34,7 +34,7 @@ public class TouchManager : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began)
             {
-                Debug.Log("Finger #" + fingerIndex.ToString() + " entered!");
+                // Debug.Log("Finger #" + fingerIndex.ToString() + " entered!");
                 timeTouchBegan[fingerIndex] = Time.time;
                 touchDidMove[fingerIndex] = false;
             }
@@ -43,7 +43,7 @@ public class TouchManager : MonoBehaviour
                 float tapTime = Time.time - timeTouchBegan[fingerIndex];
                 if (tapTime > tapTimeThreshold)
                 {
-                    Debug.Log("Stationary Touch");
+                    // Debug.Log("Stationary Touch");
                     touchable.DidMoveTouch(touch);
                 }
             }
@@ -51,7 +51,7 @@ public class TouchManager : MonoBehaviour
             {
                 if (touch.deltaPosition.magnitude > movementThreshold)
                 {
-                    Debug.Log("Finger #" + fingerIndex.ToString() + " moved " + touch.deltaPosition.magnitude.ToString());
+                    // Debug.Log("Finger #" + fingerIndex.ToString() + " moved " + touch.deltaPosition.magnitude.ToString());
                     touchDidMove[fingerIndex] = true;
                     touchable.DidMoveTouch(touch);
                 }
@@ -59,10 +59,10 @@ public class TouchManager : MonoBehaviour
             if (touch.phase == TouchPhase.Ended)
             {
                 float tapTime = Time.time - timeTouchBegan[fingerIndex];
-                Debug.Log("Finger #" + fingerIndex.ToString() + " left. Tap time: " + tapTime.ToString());
+                // Debug.Log("Finger #" + fingerIndex.ToString() + " left. Tap time: " + tapTime.ToString());
                 if (tapTime <= tapTimeThreshold && touchDidMove[fingerIndex] == false)
                 {
-                    Debug.Log("Finger #" + fingerIndex.ToString() + " TAP DETECTED at: " + touch.position.ToString());
+                    // Debug.Log("Finger #" + fingerIndex.ToString() + " TAP DETECTED at: " + touch.position.ToString());
                     touchable.DidTap(touch);
                 }
             }

@@ -827,8 +827,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48e85283ac65874a99c7e55c03aee7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  location1: {fileID: 579640891}
   enemy: {fileID: 4604710119250203026, guid: 41dbc822208f1e740a008c33d4493476, type: 3}
+  location:
+  - {fileID: 579640891}
+  - {fileID: 132301217}
+  - {fileID: 2056519062}
+  - {fileID: 1892935472}
 --- !u!4 &849923093
 Transform:
   m_ObjectHideFlags: 0

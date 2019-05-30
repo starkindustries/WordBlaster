@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4604710119250203028}
   - component: {fileID: 4604710119250203027}
   - component: {fileID: 4604710119250203029}
+  - component: {fileID: 877477088842410039}
+  - component: {fileID: 6239478926740959203}
   m_Layer: 0
   m_Name: EnemyMedium
   m_TagString: Untagged
@@ -101,3 +103,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &877477088842410039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604710119250203026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f5cd99d0889d84c935dc39119ca4ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &6239478926740959203
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4604710119250203026}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.1, y: 1}
+  m_Direction: 1

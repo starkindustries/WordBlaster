@@ -4,27 +4,40 @@ using UnityEngine;
 
 public class TestManager : MonoBehaviour
 {
-    public Transform location1;
     public GameObject enemy;
-    private GameObject activeEnemy;    
+    public Transform[] location;
+
+    private GameObject[] activeEnemy;    
 
     // Start is called before the first frame update
     void Start()
     {        
         TestFlashcard();
-        // spawn enemy and move it to location 1
-        Vector2 position = location1.position + location1.up * 10;
-        activeEnemy = Instantiate(enemy, position, Quaternion.identity);                
+                
+        activeEnemy = new GameObject[4];
+        for(int i=0; i < 4; i++)
+        {
+            Vector2 position = location[i].position + location[i].up * 10;
+            activeEnemy[i] = Instantiate(enemy, position, Quaternion.identity);
+            Flashable flashComponent = activeEnemy[i].GetComponent<Flashable>();
+            flashComponent.card = new Flashcard("testfront", "testback");
+        }
     }
 
     private void Update()
-    {        
-        float step = 1.0f * Time.deltaTime;
-        activeEnemy.transform.position = Vector3.Lerp(activeEnemy.transform.position, location1.position, step);
-        // activeEnemy.transform.position = Vector2.MoveTowards(activeEnemy.transform.position, location1.position, step);                
+    {
+        StartCoroutine(FlyEnemiesIntoView());                     
     }
 
-    
+    private IEnumerator FlyEnemiesIntoView()
+    {
+        float step = 1.0f * Time.deltaTime;
+        for (int i = 0; i < 4; i++)
+        {
+            activeEnemy[i].transform.position = Vector3.Lerp(activeEnemy[i].transform.position, location[i].position, step);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
 
     public void TestFlashcard()
     {

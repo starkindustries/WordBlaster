@@ -26,7 +26,9 @@ public class Player : MonoBehaviour, Touchable
 
     public void ShootBullet()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Flashable flashComponent = bullet.GetComponent<Flashable>();
+        flashComponent.card = new Flashcard("testfront", "testback");
         AudioManager.Instance.Play("Shoot");
     }
 
@@ -45,7 +47,7 @@ public class Player : MonoBehaviour, Touchable
             laserLine.SetPosition(0, firePoint.position);
             laserLine.SetPosition(1, firePoint.position + firePoint.up * 100);
         }
-
+          
         laserLine.enabled = true;
         
         // wait a bit
