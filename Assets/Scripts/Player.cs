@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, Touchable
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
     public LineRenderer laserLine;
+
+    private float shipSpeed = 10f;
 
     private void Update()
     {     
@@ -50,5 +52,28 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         laserLine.enabled = false;
-    }    
+    }
+
+    public void MoveShip(Vector2 touchPosition)
+    {
+        Vector3 position = Camera.main.ScreenToWorldPoint(touchPosition);
+        position.z = 0;
+        transform.position = Vector3.Lerp(transform.position, position, shipSpeed * Time.deltaTime);
+    }
+
+    // Touchable Interface Implementation
+    public void DidTap(Touch touch)
+    {
+        ShootBullet();
+    }
+
+    public void DidMoveTouch(Touch touch)
+    {
+        MoveShip(touch.position);
+    }
+
+    public void DidStationaryTouch(Touch touch)
+    {
+        MoveShip(touch.position);
+    }
 }
