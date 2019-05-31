@@ -20,7 +20,7 @@ public class TestManager : MonoBehaviour
             Vector2 position = location[i].position + location[i].up * 10;
             activeEnemy[i] = Instantiate(enemy, position, Quaternion.identity);
             Flashable flashComponent = activeEnemy[i].GetComponent<Flashable>();
-            flashComponent.card = new Flashcard("testfront", "testback");
+            flashComponent.SetFlashcard(KoreanFlashcards.cards[i]);
         }
     }
 

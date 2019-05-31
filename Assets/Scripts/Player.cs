@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour, Touchable
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
     public LineRenderer laserLine;
+    public TextMeshProUGUI tmpText;
 
     private float shipSpeed = 10f;
+
+    private void Start()
+    {
+        tmpText.text = KoreanFlashcards.cards[0].GetBack();
+    }
 
     private void Update()
     {     
@@ -28,7 +35,7 @@ public class Player : MonoBehaviour, Touchable
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Flashable flashComponent = bullet.GetComponent<Flashable>();
-        flashComponent.card = new Flashcard("testfront", "testback");
+        flashComponent.SetFlashcard(KoreanFlashcards.cards[0]);
         AudioManager.Instance.Play("Shoot");
     }
 

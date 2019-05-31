@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface Flashable
 {
-    Flashcard card { get; set; }
+    Flashcard card { get; }
+
+    void SetFlashcard(Flashcard card);
 }

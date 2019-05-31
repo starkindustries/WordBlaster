@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Bullet : MonoBehaviour, Flashable
 {
     public Flashcard card { get; set; }
 
     public float speed = 20f;
-    public Rigidbody2D rb;    
+    public Rigidbody2D rb;
+    public TextMeshProUGUI tmpText;
+    public GameObject explosion;
 
     // public GameObject bulletParticles;
 
@@ -36,7 +39,10 @@ public class Bullet : MonoBehaviour, Flashable
         
         if(flashComponent.card.GetFront() == card.GetFront())
         {
-            Debug.Log("WE HAVE A MATCH!!");
+            Debug.Log("WE HAVE A MATCH!!");            
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+            return;
         }
         else
         {
@@ -44,5 +50,11 @@ public class Bullet : MonoBehaviour, Flashable
         }
         // Instantiate(bulletParticles, transform.position, transform.rotation);
         // Destroy(this.gameObject);
+    }
+
+    public void SetFlashcard(Flashcard card)
+    {
+        this.card = card;
+        tmpText.text = card.GetBack();
     }
 }
