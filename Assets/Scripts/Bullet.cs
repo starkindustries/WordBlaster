@@ -42,14 +42,14 @@ public class Bullet : MonoBehaviour, Flashable
             Debug.Log("WE HAVE A MATCH!!");            
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+            FindObjectOfType<TestManager>().SetNextFlashcard();
             return;
         }
         else
         {
             Debug.Log("CARDS DO NOT MATCH!!");
         }
-        // Instantiate(bulletParticles, transform.position, transform.rotation);
-        // Destroy(this.gameObject);
     }
 
     public void SetFlashcard(Flashcard card)

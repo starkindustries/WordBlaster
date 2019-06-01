@@ -1,29 +1,81 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TestManager : MonoBehaviour
 {
     public GameObject enemy;
     public Transform[] location;
+    public Transform spawnLocation;
+    public GameObject ship;
 
-    private GameObject[] activeEnemy;    
+    private GameObject[] activeEnemy;
+    private int currentIndex = 0;
+    private int[] indexList;
+    private int[] shuffledIndexList;
 
     // Start is called before the first frame update
     void Start()
     {        
         TestFlashcard();
-                
-        activeEnemy = new GameObject[4];
-        for(int i=0; i < 4; i++)
+
+        SpawnNewEnemies();
+        SetNextFlashcard();
+    }
+
+    private void SpawnNewEnemies()
+    {
+        // Get 20 random words. Spawn 4 at a time
+        indexList = new int[4];
+        for (int i = 0; i < 4; i++)
         {
-            Vector2 position = location[i].position + location[i].up * 10;
-            activeEnemy[i] = Instantiate(enemy, position, Quaternion.identity);
-            Flashable flashComponent = activeEnemy[i].GetComponent<Flashable>();
-            flashComponent.SetFlashcard(KoreanFlashcards.cards[i]);
+            indexList[i] = UnityEngine.Random.Range(0, KoreanFlashcards.cards.Length);
+        }
+
+        activeEnemy = new GameObject[4];
+        for (int i = 0; i < 4; i++)
+        {
+            activeEnemy[i] = Instantiate(enemy, spawnLocation.position, Quaternion.identity);
+            activeEnemy[i].GetComponent<Flashable>().SetFlashcard(KoreanFlashcards.cards[indexList[i]]);
+            activeEnemy[i].GetComponent<Enemy>().location = location[i];
+        }
+
+        ShuffleList();        
+    }
+
+    public void SetNextFlashcard()
+    {        
+        if (currentIndex >= 4) {
+            currentIndex = 0;
+            SpawnNewEnemies();
+        }
+        int index = shuffledIndexList[currentIndex];
+        SetShipFlashcard(index);
+        currentIndex++;                
+    }
+
+    private void ShuffleList()
+    {
+        // https://stackoverflow.com/questions/273313/randomize-a-listt
+        shuffledIndexList = new int[4];
+        Array.Copy(indexList, shuffledIndexList, indexList.Length);
+        int n = shuffledIndexList.Length;
+        while(n > 1)
+        {
+            n--;
+            int k = UnityEngine.Random.Range(0, 4);
+            int value = shuffledIndexList[k];
+            shuffledIndexList[k] = shuffledIndexList[n];
+            shuffledIndexList[n] = value;
         }
     }
 
+    private void SetShipFlashcard(int index)
+    {
+        ship.GetComponent<Flashable>().SetFlashcard(KoreanFlashcards.cards[index]);
+    }
+    /*
     private void Update()
     {
         StartCoroutine(FlyEnemiesIntoView());                     
@@ -37,7 +89,7 @@ public class TestManager : MonoBehaviour
             activeEnemy[i].transform.position = Vector3.Lerp(activeEnemy[i].transform.position, location[i].position, step);
             yield return new WaitForSeconds(0.2f);
         }
-    }
+    }*/
 
     public void TestFlashcard()
     {
