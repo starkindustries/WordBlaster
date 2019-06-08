@@ -27,15 +27,6 @@ public class LevelChanger : MonoBehaviour
         DontDestroyOnLoad(gameObject);        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            FadetoScene(1);
-        }
-    }
-
     public void FadetoScene(int sceneIndex)
     {
         sceneToLoad = sceneIndex;
