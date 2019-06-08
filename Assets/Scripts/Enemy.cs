@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Enemy : MonoBehaviour, Flashable
+public class Enemy : MonoBehaviour, Flashable, Damageable
 {
+    public Animator animator;
+    public GameObject explosion;
     public Flashcard card { get; set; }
-
     public TextMeshProUGUI tmpText;
     public Transform location;
 
@@ -27,5 +28,16 @@ public class Enemy : MonoBehaviour, Flashable
     {
         this.card = card;
         tmpText.text = card.GetFront();
+    }
+
+    public void Damage()
+    {
+        animator.SetTrigger("Die");
+    }
+
+    public void Explode()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);        
     }
 }

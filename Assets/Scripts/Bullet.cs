@@ -23,10 +23,10 @@ public class Bullet : MonoBehaviour, Flashable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy == null )
+        Damageable damageComponent = collision.GetComponent<Damageable>();
+        if (damageComponent == null )
         {
-            Debug.LogWarning("Warning: enemy component is null for " + collision.name);
+            Debug.LogWarning("Warning: damage component is null for " + collision.name);
             return; 
         }
 
@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour, Flashable
             Debug.Log("WE HAVE A MATCH!!");            
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
-            Destroy(collision.gameObject);
+            damageComponent.Damage();
             FindObjectOfType<TestManager>().SetNextFlashcard();
             return;
         }
