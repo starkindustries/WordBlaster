@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Touchable
 {
-    void DidTap(Touch touch);
-    void DidMoveTouch(Touch touch);
-    void DidStationaryTouch(Touch touch);
+    void DidBeginTouch(Vector3 position);
+    void DidMoveTouch(Vector3 position);
+    void DidEndTouch(Vector3 position);
 }

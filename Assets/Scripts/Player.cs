@@ -12,23 +12,24 @@ public class Player : MonoBehaviour, Touchable, Flashable
     public LineRenderer laserLine;
     public TextMeshProUGUI tmpText;
 
-    private float shipSpeed = 10f;    
+    // private float shipSpeed = 10f;    
 
     private void Start()
     {        
     }
 
     private void Update()
-    {     
-        /*
-        if (Input.GetButtonDown("Fire1"))
+    {             
+        /*if (Input.GetButtonDown("Fire1"))
         {
+            MoveShip(Input.mousePosition);
+            // transform.position = Input.mousePosition;
             ShootBullet();
-        }
+        }        
         if (Input.GetButtonDown("Fire2"))
         {
             StartCoroutine(FireLaser());
-        }
+        } 
         */
     }        
 
@@ -66,25 +67,29 @@ public class Player : MonoBehaviour, Touchable, Flashable
 
     public void MoveShip(Vector2 touchPosition)
     {
-        Vector3 position = Camera.main.ScreenToWorldPoint(touchPosition);
-        position.z = 0;
-        transform.position = Vector3.Lerp(transform.position, position, shipSpeed * Time.deltaTime);
+        Vector3 position = transform.position;
+        position.x = Camera.main.ScreenToWorldPoint(touchPosition).x;
+        transform.position = position;
+        // Vector3 position = Camera.main.ScreenToWorldPoint(touchPosition);
+        // position.z = 0;
+        // transform.position = Vector3.Lerp(transform.position, position, shipSpeed * Time.deltaTime);
     }
 
-    // Touchable Interface Implementation
-    public void DidTap(Touch touch)
+    // Touchable Interface Implementation    
+    public void DidBeginTouch(Vector3 position)
     {
+        MoveShip(position);
+    }
+
+    public void DidMoveTouch(Vector3 position)
+    {
+        MoveShip(position);
+    }
+
+    public void DidEndTouch(Vector3 position)
+    {
+        MoveShip(position);
         ShootBullet();
-    }
-
-    public void DidMoveTouch(Touch touch)
-    {
-        MoveShip(touch.position);
-    }
-
-    public void DidStationaryTouch(Touch touch)
-    {
-        MoveShip(touch.position);
     }
 
     // Flashable Interface Implementation

@@ -18,13 +18,20 @@ public class Bullet : MonoBehaviour, Flashable
     void Start()
     {
         rb.velocity = transform.up * speed;
-        Destroy(this.gameObject, 3.0f);
+        Destroy(this.gameObject, 2.0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy == null )
+        {
+            Debug.LogWarning("Warning: enemy component is null for " + collision.name);
+            return; 
+        }
+
         Debug.Log("BULLET HIT: " + collision.name);
-        Flashable flashComponent = collision.GetComponent<Flashable>();
+        Flashable flashComponent = collision.GetComponent<Flashable>();        
         if (flashComponent == null )
         {
             Debug.LogWarning("Warning: flashable component is null for " + collision.name);

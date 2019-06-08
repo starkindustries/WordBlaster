@@ -7,7 +7,7 @@ public class TestManager : MonoBehaviour
 {
     public GameObject enemy;
     public Transform[] location;
-    public Transform spawnLocation;
+    public Transform[] spawnLocation;
     public GameObject ship;
 
     private GameObject[] activeEnemy;
@@ -17,7 +17,9 @@ public class TestManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        // Screen.SetResolution(width: 600, height: 900, fullscreen: false);
+
         TestFlashcard();
 
         SpawnNewEnemies();
@@ -26,6 +28,17 @@ public class TestManager : MonoBehaviour
 
     private void SpawnNewEnemies()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            if(activeEnemy != null)
+            {
+                if (activeEnemy[i] != null)
+                {
+                    Destroy(activeEnemy[i].gameObject);
+                }                
+            }            
+        }
+        
         // Get 20 random words. Spawn 4 at a time
         indexList = new int[4];
         for (int i = 0; i < 4; i++)
@@ -36,7 +49,7 @@ public class TestManager : MonoBehaviour
         activeEnemy = new GameObject[4];
         for (int i = 0; i < 4; i++)
         {
-            activeEnemy[i] = Instantiate(enemy, spawnLocation.position, Quaternion.identity);
+            activeEnemy[i] = Instantiate(enemy, spawnLocation[i].position, Quaternion.identity);
             activeEnemy[i].GetComponent<Flashable>().SetFlashcard(KoreanFlashcards.cards[indexList[i]]);
             activeEnemy[i].GetComponent<Enemy>().location = location[i];
         }
