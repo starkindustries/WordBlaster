@@ -27,18 +27,7 @@ public class TestManager : MonoBehaviour
     }
 
     private void SpawnNewEnemies()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            if(activeEnemy != null)
-            {
-                if (activeEnemy[i] != null)
-                {
-                    Destroy(activeEnemy[i].gameObject);
-                }                
-            }            
-        }
-        
+    {        
         // Get 20 random words. Spawn 4 at a time
         indexList = new int[4];
         for (int i = 0; i < 4; i++)
@@ -56,7 +45,7 @@ public class TestManager : MonoBehaviour
 
         ShuffleList();        
     }
-
+    
     public void SetNextFlashcard()
     {        
         if (currentIndex >= 4) {
@@ -64,8 +53,25 @@ public class TestManager : MonoBehaviour
             SpawnNewEnemies();
         }
         int index = shuffledIndexList[currentIndex];
-        SetShipFlashcard(index);
-        currentIndex++;                
+        SetShipFlashcard(index);                   
+    }
+
+    public void MatchMadeWith(Flashcard card) 
+    {
+        int index = shuffledIndexList[currentIndex];
+        Flashcard currentCard = KoreanFlashcards.cards[index];
+        if (currentCard.Matches(other: card))
+        {
+            Debug.Log("MATCH CONFIRMED!!~~");
+            currentIndex++;
+            SetNextFlashcard();
+        }
+        else
+        {
+            Debug.Log("Match attempted but unverified..");
+            Debug.Log("Matched card: " + card.GetFront() + " " + card.GetBack());
+            Debug.Log("Current card: " + currentCard.GetFront() + " " + currentCard.GetBack());
+        }
     }
 
     private void ShuffleList()

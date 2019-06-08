@@ -46,11 +46,11 @@ public class Bullet : MonoBehaviour, Flashable
         
         if(flashComponent.card.GetFront() == card.GetFront())
         {
-            Debug.Log("WE HAVE A MATCH!!");            
+            Debug.Log("WE HAVE A MATCH!!");
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             damageComponent.Damage();
-            FindObjectOfType<TestManager>().SetNextFlashcard();
+            FindObjectOfType<TestManager>().MatchMadeWith(card);
             return;
         }
         else

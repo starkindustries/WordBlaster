@@ -24,6 +24,11 @@ public class Flashcard
         return this.back == back;
     }
 
+    public bool Matches(Flashcard other)
+    {
+        return (this.front == other.front && this.back == other.back);
+    }
+
     // Getter Functions
     public string GetFront()
     {
